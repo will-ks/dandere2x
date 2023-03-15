@@ -1,7 +1,6 @@
 numpy
 imageio==2.9.0
 Pillow
-PyQt6
 dataclasses==0.6
 pyyaml==5.4
 psutil
