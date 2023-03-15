@@ -21,4 +21,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to Github Container registry
-        run: docker push ghcr.io/anuraj/minimalapi:1.0.0
+        run: docker push ghcr.io/will-ks/testimage:1.0.0
