@@ -44,8 +44,16 @@ RUN wget 'https://bootstrap.pypa.io/get-pip.py' && python3.8 get-pip.py
 RUN pip3.8 install -U pip
 RUN pip3.8 install -r /dandere2x/dandere2x/src/requirements.txt
 
-WORKDIR /dandere2x/dandere2x/src/
-ENTRYPOINT ["python3.8", "/dandere2x/dandere2x/src/main.py"]
+#WORKDIR /dandere2x/dandere2x/src/
+#ENTRYPOINT ["python3.8", "/dandere2x/dandere2x/src/main.py"]
 
 ENV NVIDIA_DRIVER_CAPABILITIES all
 ENV DEBIAN_FRONTEND teletype
+
+RUN apt-get install -y node
+RUN npm install --global yarn
+
+COPY server .
+WORKDIR /server/
+RUN yarn
+RUN yarn start
