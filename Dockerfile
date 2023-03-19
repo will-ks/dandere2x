@@ -50,8 +50,9 @@ RUN pip3.8 install -r /dandere2x/dandere2x/src/requirements.txt
 ENV NVIDIA_DRIVER_CAPABILITIES all
 ENV DEBIAN_FRONTEND teletype
 
-RUN apt-get install -y node
-RUN npm install --global yarn
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+RUN npm install --silent --global yarn
 
 COPY server .
 WORKDIR /server/
