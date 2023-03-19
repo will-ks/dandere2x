@@ -51,9 +51,8 @@ ENV NVIDIA_DRIVER_CAPABILITIES all
 ENV DEBIAN_FRONTEND teletype
 
 RUN apt-get install -y curl
-RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-RUN nvm install lts/hydrogen
+RUN curl -fsSL https://fnm.vercel.app/install | bash
+RUN fnm install lts/hydrogen
 RUN npm install --silent --global yarn
 
 COPY server .
