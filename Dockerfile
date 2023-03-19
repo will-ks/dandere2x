@@ -55,7 +55,7 @@ RUN apt-get install -y curl
 
 # nvm environment variables
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION lts/hydrogen
+ENV NODE_VERSION 18.15.0
 
 # replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
