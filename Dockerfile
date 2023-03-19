@@ -50,7 +50,9 @@ RUN pip3.8 install -r /dandere2x/dandere2x/src/requirements.txt
 ENV NVIDIA_DRIVER_CAPABILITIES all
 ENV DEBIAN_FRONTEND teletype
 
-RUN apt-get install -y nodejs
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+RUN source ~/.bashrc
+RUN nvm install lts/hydrogen
 RUN apt-get install -y npm
 RUN npm install --silent --global yarn
 
