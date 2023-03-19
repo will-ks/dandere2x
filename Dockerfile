@@ -51,12 +51,12 @@ ENV NVIDIA_DRIVER_CAPABILITIES all
 ENV DEBIAN_FRONTEND teletype
 
 RUN apt-get install -y curl
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-RUN sudo apt-get install -y nodejs
-RUN apt-get install -y npm
-RUN npm install --silent --global yarn
-
-COPY server .
-WORKDIR /server/
-RUN yarn
-RUN yarn start
+RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+#RUN sudo apt-get install -y nodejs
+#RUN apt-get install -y npm
+#RUN npm install --silent --global yarn
+#
+#COPY server .
+#WORKDIR /server/
+#RUN yarn
+#RUN yarn start
