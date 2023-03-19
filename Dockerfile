@@ -53,11 +53,10 @@ ENV DEBIAN_FRONTEND teletype
 RUN apt-get install -y curl
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-#RUN sudo apt-get install -y nodejs
-#RUN apt-get install -y npm
-#RUN npm install --silent --global yarn
-#
-#COPY server .
-#WORKDIR /server/
-#RUN yarn
-#RUN yarn start
+RUN nvm install lts/hydrogen
+RUN npm install --silent --global yarn
+
+COPY server .
+WORKDIR /server/
+RUN yarn
+ENTRYPOINT ["yarn", "start"]
