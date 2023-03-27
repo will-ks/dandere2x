@@ -67,10 +67,6 @@ const app = express();
 
 const PORT = 3001;
 
-const __filename = fileURLToPath(import.meta.url);
-
-const __dirname = path.dirname(__filename);
-
 const messages: string[] = [];
 let pyshell = new PythonShell(
   Path.join(__dirname, "../dandere2x/dandere2x/src/main.py"),
