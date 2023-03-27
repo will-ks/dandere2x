@@ -1,7 +1,9 @@
 /* eslint-disable unicorn/no-process-exit */
 import express from "express";
+import path from "path";
 import * as Path from "path";
 import { PythonShell } from "python-shell";
+import { fileURLToPath } from "url";
 
 const addGlobalExitHandler = (
   callback: (eventOrExitCodeOrError?: number | string | Error) => void
@@ -64,6 +66,10 @@ addGlobalExitHandler((eventOrExitCodeOrError) => {
 const app = express();
 
 const PORT = 3001;
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 const messages: string[] = [];
 let pyshell = new PythonShell(
