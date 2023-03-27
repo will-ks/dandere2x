@@ -97,9 +97,9 @@ const messages: string[] = [];
       "-ws",
       "./workspace/",
       "-i",
-      "output.mp4",
+      "../../../output.mp4",
       "-o",
-      "upscaled.mkv",
+      "../../../upscaled.mkv",
     ],
     {
       cwd: Path.join(__dirname, "../dandere2x/dandere2x/src/"),
