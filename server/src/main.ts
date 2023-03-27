@@ -1,4 +1,5 @@
 /* eslint-disable unicorn/no-process-exit */
+import execa from "execa";
 import express from "express";
 import path from "path";
 import * as Path from "path";
@@ -68,19 +69,6 @@ const app = express();
 const PORT = 3001;
 
 const messages: string[] = [];
-let pyshell = new PythonShell(
-  Path.join(__dirname, "../dandere2x/dandere2x/src/main.py"),
-  { mode: "text" }
-);
-
-pyshell.on("message", function (message: string) {
-  // handle message (a line of text from stdout)
-  messages.push(message);
-});
-pyshell.on("stderr", function (stderr: string) {
-  // handle stderr (a line of text from stderr)
-  messages.push(stderr);
-});
 
 (async () => {
   app.get("/", (_req, res) => {
@@ -100,6 +88,10 @@ pyshell.on("stderr", function (stderr: string) {
     res.send("Started");
   });
   app.listen(PORT);
+  const { stdout, stderr } = await execa("python3.8", [
+    Path.join(__dirname, "../dandere2x/dandere2x/src/main.py"),
+  ]);
+  console.log(stdout, stderr);
 })();
 
 console.log(`Server started on port ${PORT}`);
