@@ -95,9 +95,9 @@ const messages: string[] = [];
     "-ws",
     "./workspace/",
     "-i",
-    Path.join(__dirname, "../output.mp4"),
+    Path.join(__dirname, "public/output.mp4"),
     "-o",
-    Path.join(__dirname, "../upscaled.mkv"),
+    Path.join(__dirname, "public/upscaled.mkv"),
   ]);
   console.log(stdout, stderr);
 })();
