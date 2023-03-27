@@ -88,17 +88,23 @@ const messages: string[] = [];
     res.send("Started");
   });
   app.listen(PORT);
-  const { stdout, stderr } = await execa("python3.8", [
-    Path.join(__dirname, "../dandere2x/dandere2x/src/main.py"),
-    "-p",
-    "singleprocess",
-    "-ws",
-    "./workspace/",
-    "-i",
-    Path.join(__dirname, "public/output.mp4"),
-    "-o",
-    Path.join(__dirname, "public/upscaled.mkv"),
-  ]);
+  const { stdout, stderr } = await execa(
+    "python3.8",
+    [
+      "main.py",
+      "-p",
+      "singleprocess",
+      "-ws",
+      "./workspace/",
+      "-i",
+      Path.join(__dirname, "public/output.mp4"),
+      "-o",
+      Path.join(__dirname, "public/upscaled.mkv"),
+    ],
+    {
+      cwd: Path.join(__dirname, "../dandere2x/dandere2x/src/"),
+    }
+  );
   console.log(stdout, stderr);
 })();
 
